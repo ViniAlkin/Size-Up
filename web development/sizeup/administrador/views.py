@@ -49,5 +49,5 @@ class PesquisarAvaliavel(View):
 		form = self.form_class(request.POST)
 		if form.is_valid():
 			nome = form.cleaned_data['nome']
-			avaliaveis = Avaliavel_Beta.objects.filter(nome__istartswith=nome)
+			avaliaveis = Avaliavel_Beta.objects.filter(nome__icontains=nome)
 		return render(request, self.template, {'avaliaveis':avaliaveis, 'form':form})
