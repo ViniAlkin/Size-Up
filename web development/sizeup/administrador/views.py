@@ -8,6 +8,12 @@ from forms import *
 from avaliavel.models import *
 from core.models import *
 
+
+class Index(View):
+	template = "administrador/index.html"
+	def get(self, request):
+		return render(request, self.template, {})
+
 class RegistrarAvaliavel(View):
 	template = "administrador/registro_avaliavel.html"
 	form_class = Form_Avaliavel_Register_Beta
@@ -49,5 +55,5 @@ class PesquisarAvaliavel(View):
 		form = self.form_class(request.POST)
 		if form.is_valid():
 			nome = form.cleaned_data['nome']
-			avaliaveis = Avaliavel_Beta.objects.filter(nome__istartswith=nome)
+			avaliaveis = Avaliavel_Beta.objects.filter(nome__icontains=nome)
 		return render(request, self.template, {'avaliaveis':avaliaveis, 'form':form})
