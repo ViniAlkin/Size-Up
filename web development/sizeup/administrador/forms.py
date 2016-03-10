@@ -36,7 +36,7 @@ class Form_Avaliavel_Register_Beta(forms.Form):
 	nome = forms.CharField(max_length=50)
 	telefone = forms.CharField(max_length=50)
 	setor = forms.CharField(max_length=50)
-	especialidades = forms.CharField(max_length=50, required=False)
+	especialidade = forms.CharField(max_length=50, required=False)
 
 	estado = forms.CharField(max_length=50)
 	municipio = forms.CharField(max_length=50)

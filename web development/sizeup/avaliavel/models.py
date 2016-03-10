@@ -16,7 +16,7 @@ class Avaliavel_Beta(models.Model):
 	nome = models.CharField(max_length=100)
 	telefone = models.CharField(max_length=50, blank=True)
 	setor = models.CharField(max_length=100)
-	subsetor = models.CharField(max_length=100, blank=True)
+	especialidade = models.CharField(max_length=100, blank=True)
 	endereco_beta = models.OneToOneField('core.Endereco_Beta', blank=True, null=True)
 
 	def __unicode__(self):

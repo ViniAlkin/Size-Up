@@ -30,8 +30,8 @@ class RegistrarAvaliavel(View):
 			telefone = form.cleaned_data['telefone']
 			nome = form.cleaned_data['nome']
 			setor = form.cleaned_data['setor']
-			subsetor = form.cleaned_data['subsetor']
-			avaliavel = Avaliavel_Beta(telefone=telefone,nome=nome,setor=setor,subsetor=subsetor,endereco_beta=endereco)
+			especialidade = form.cleaned_data['especialidade']
+			avaliavel = Avaliavel_Beta(telefone=telefone,nome=nome,setor=setor,especialidade=especialidade,endereco_beta=endereco)
 			avaliavel.save()
 		return render(request, self.template, {'form':form})
 
@@ -49,5 +49,5 @@ class PesquisarAvaliavel(View):
 		form = self.form_class(request.POST)
 		if form.is_valid():
 			nome = form.cleaned_data['nome']
-			avaliaveis = Avaliavel_Beta.objects.filter(nome__icontains=nome)
+			avaliaveis = Avaliavel_Beta.objects.filter(nome__istartswith=nome)
 		return render(request, self.template, {'avaliaveis':avaliaveis, 'form':form})
